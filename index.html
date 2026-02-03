@@ -4,8 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Excel Formulas That Actually Work</title>
-    <!-- Excel formula reference -->
+    <!-- formula reference -->
     <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a1a;
+            --bg-tertiary: #111;
+            --bg-code: #0a0a0a;
+            --text-primary: #e0e0e0;
+            --text-secondary: #888;
+            --accent-color: #40E0D0;
+            --border-color: #333;
+            --shadow-color: #40E0D0;
+            --practice-bg: #0d1f23;
+            --try-it-bg: #1a2a2e;
+            --pro-tip-bg: #0d2d2d;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f9f9f9;
+            --bg-code: #f0f0f0;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666;
+            --accent-color: #40E0D0;
+            --border-color: #d0d0d0;
+            --shadow-color: #40E0D0;
+            --practice-bg: #e8f8f5;
+            --try-it-bg: #e0f2f1;
+            --pro-tip-bg: #e8f5e9;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -14,12 +44,13 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            background: #0a0a0a;
-            color: #e0e0e0;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
             padding: 20px;
             scroll-behavior: smooth;
             scroll-padding-top: 100px;
+            transition: background 0.3s, color 0.3s;
         }
 
         .container {
@@ -29,8 +60,32 @@
 
         header {
             margin-bottom: 60px;
-            border-bottom: 3px solid #00ff88;
+            border-bottom: 3px solid var(--accent-color);
             padding-bottom: 20px;
+            position: relative;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(180deg) scale(1.1);
+            box-shadow: 0 0 20px var(--accent-color);
         }
 
         h1 {
@@ -38,26 +93,26 @@
             font-weight: 700;
             margin-bottom: 10px;
             letter-spacing: -1px;
-            color: #00ff88;
+            color: var(--accent-color);
         }
 
         .subtitle {
             font-size: 1.1rem;
-            color: #888;
+            color: var(--text-secondary);
         }
 
         .formula-section {
-            background: #1a1a1a;
-            border: 2px solid #333;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 4px 4px 0 #00ff88;
-            transition: transform 0.2s;
+            box-shadow: 4px 4px 0 var(--shadow-color);
+            transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
         }
 
         .formula-section:hover {
             transform: translateY(-2px);
-            box-shadow: 6px 6px 0 #00ff88;
+            box-shadow: 6px 6px 0 var(--shadow-color);
         }
 
         .formula-header {
@@ -66,17 +121,17 @@
             align-items: center;
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 2px solid #333;
+            border-bottom: 2px solid var(--border-color);
         }
 
         .formula-name {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #00ff88;
+            color: var(--accent-color);
         }
 
         .difficulty {
-            color: #0a0a0a;
+            color: #fff;
             padding: 5px 15px;
             font-size: 0.9rem;
             font-weight: 600;
@@ -87,14 +142,14 @@
         .difficulty.hard { background: #f44336; }
 
         .formula-syntax {
-            background: #0a0a0a;
-            border-left: 4px solid #00ff88;
+            background: var(--bg-code);
+            border-left: 4px solid var(--accent-color);
             padding: 15px;
             font-family: 'Courier New', monospace;
             font-size: 1rem;
             margin: 15px 0;
             overflow-x: auto;
-            color: #00ff88;
+            color: var(--accent-color);
         }
 
         .what-it-does {
@@ -107,11 +162,11 @@
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 1px;
-            color: #00ff88;
+            color: var(--accent-color);
         }
 
         .example {
-            background: #111;
+            background: var(--bg-tertiary);
             padding: 20px;
             margin: 20px 0;
             border-left: 4px solid #666;
@@ -123,12 +178,12 @@
             font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: #00ff88;
+            color: var(--accent-color);
         }
 
         .try-it {
-            background: #1a2a1a;
-            border: 2px solid #00ff88;
+            background: var(--try-it-bg);
+            border: 2px solid var(--accent-color);
             padding: 20px;
             margin: 20px 0;
         }
@@ -136,27 +191,27 @@
         .try-it h4 {
             margin-bottom: 10px;
             font-size: 1rem;
-            color: #00ff88;
+            color: var(--accent-color);
         }
 
         .practice-area {
-            background: #0d1f0d;
-            border: 2px solid #00ff88;
+            background: var(--practice-bg);
+            border: 2px solid var(--accent-color);
             padding: 20px;
             margin: 20px 0;
         }
 
         .practice-area h4 {
             margin-bottom: 15px;
-            color: #00ff88;
+            color: var(--accent-color);
         }
 
         .practice-input {
             width: 100%;
             padding: 12px;
-            background: #0a0a0a;
-            border: 2px solid #333;
-            color: #00ff88;
+            background: var(--bg-code);
+            border: 2px solid var(--border-color);
+            color: var(--accent-color);
             font-family: 'Courier New', monospace;
             font-size: 1rem;
             margin-bottom: 10px;
@@ -165,7 +220,7 @@
 
         .practice-input:focus {
             outline: none;
-            border-color: #00ff88;
+            border-color: var(--accent-color);
         }
 
         .practice-feedback {
@@ -189,6 +244,14 @@
             display: block;
         }
 
+        [data-theme="light"] .practice-feedback.correct {
+            background: #e8f5e9;
+        }
+
+        [data-theme="light"] .practice-feedback.incorrect {
+            background: #ffebee;
+        }
+
         .playground {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -209,21 +272,21 @@
 
         .input-group input {
             padding: 10px;
-            border: 2px solid #333;
+            border: 2px solid var(--border-color);
             font-size: 1rem;
             font-family: inherit;
-            background: #0a0a0a;
-            color: #e0e0e0;
+            background: var(--bg-code);
+            color: var(--text-primary);
             transition: border-color 0.3s;
         }
 
         .input-group input:focus {
             outline: none;
-            border-color: #00ff88;
+            border-color: var(--accent-color);
         }
 
         .result {
-            background: #00ff88;
+            background: var(--accent-color);
             color: #0a0a0a;
             padding: 15px;
             margin-top: 15px;
@@ -233,7 +296,7 @@
         }
 
         .pro-tip {
-            background: #0d2d0d;
+            background: var(--pro-tip-bg);
             border-left: 4px solid #4CAF50;
             padding: 15px;
             margin: 20px 0;
@@ -243,13 +306,14 @@
         .nav {
             position: sticky;
             top: 20px;
-            background: #1a1a1a;
-            border: 2px solid #333;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
             padding: 20px;
             margin-bottom: 30px;
-            box-shadow: 4px 4px 0 #00ff88;
+            box-shadow: 4px 4px 0 var(--shadow-color);
             scrollbar-width: thin;
-            scrollbar-color: #00ff88 #0a0a0a;
+            scrollbar-color: var(--accent-color) var(--bg-primary);
+            transition: background 0.3s;
         }
 
         .nav-header {
@@ -262,14 +326,14 @@
 
         .nav-header h3 {
             font-size: 1.2rem;
-            color: #00ff88;
+            color: var(--accent-color);
             margin: 0;
         }
 
         .nav-toggle {
             background: none;
             border: none;
-            color: #00ff88;
+            color: var(--accent-color);
             font-size: 1.5rem;
             cursor: pointer;
             padding: 0;
@@ -298,11 +362,11 @@
         }
 
         .nav-content::-webkit-scrollbar-track {
-            background: #0a0a0a;
+            background: var(--bg-primary);
         }
 
         .nav-content::-webkit-scrollbar-thumb {
-            background: #00ff88;
+            background: var(--accent-color);
             border-radius: 4px;
         }
 
@@ -315,14 +379,14 @@
         }
 
         .nav a {
-            color: #e0e0e0;
+            color: var(--text-primary);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
         }
 
         .nav a:hover {
-            color: #00ff88;
+            color: var(--accent-color);
         }
 
         @media (max-width: 768px) {
@@ -337,10 +401,16 @@
             .formula-name {
                 font-size: 1.5rem;
             }
+
+            .theme-toggle {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
         }
 
         .check-btn {
-            background: #00ff88;
+            background: var(--accent-color);
             color: #0a0a0a;
             border: none;
             padding: 10px 20px;
@@ -359,9 +429,9 @@
         }
 
         .copy-btn {
-            background: #333;
-            color: #00ff88;
-            border: 1px solid #00ff88;
+            background: var(--bg-secondary);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
             padding: 5px 12px;
             font-size: 0.85rem;
             font-weight: 600;
@@ -372,8 +442,8 @@
         }
 
         .copy-btn:hover {
-            background: #00ff88;
-            color: #0a0a0a;
+            background: var(--accent-color);
+            color: var(--bg-primary);
         }
 
         .copy-btn:active {
@@ -382,7 +452,7 @@
 
         .copy-btn.copied {
             background: #4CAF50;
-            color: #0a0a0a;
+            color: #fff;
         }
 
         .formula-syntax-wrapper {
@@ -401,6 +471,9 @@
 <body>
     <div class="container">
         <header>
+            <button class="theme-toggle" onclick="toggleTheme()" id="theme-toggle" aria-label="Toggle theme">
+                🌙
+            </button>
             <h1>Excel Formulas That Actually Work</h1>
             <p class="subtitle">No fluff. No nonsense. Just formulas that get the job done. Probably.</p>
         </header>
@@ -914,9 +987,6 @@
             </div>
         </div>
 
-        <!-- Keep all other formulas from the previous version (SUMIF, COUNTIF, etc.) -->
-        <!-- I'll add abbreviated versions of the remaining formulas to keep file size reasonable -->
-
         <!-- SUMIF -->
         <div class="formula-section" id="sumif">
             <div class="formula-header">
@@ -957,11 +1027,39 @@
             </div>
         </div>
 
-        <!-- I'll keep the rest concise but include practice areas for key formulas -->
-
     </div>
 
     <script>
+        // Theme toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeToggle = document.getElementById('theme-toggle');
+            const currentTheme = html.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                html.removeAttribute('data-theme');
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                html.setAttribute('data-theme', 'light');
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Load saved theme on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            const themeToggle = document.getElementById('theme-toggle');
+            
+            if (savedTheme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeToggle.textContent = '☀️';
+            } else {
+                themeToggle.textContent = '🌙';
+            }
+        });
+
         // Toggle navigation
         function toggleNav() {
             const navContent = document.getElementById('nav-content');
