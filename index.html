@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Excel Formulas That Actually Work</title>
+    <!-- Excel formula reference -->
     <style>
         * {
             margin: 0;
@@ -28,55 +29,8 @@
 
         header {
             margin-bottom: 60px;
-            border-bottom: 3px solid #40E0D0;
+            border-bottom: 3px solid #00ff88;
             padding-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .header-title-wrap {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .theme-toggle {
-            flex-shrink: 0;
-            width: 44px;
-            height: 44px;
-            border: 2px solid #40E0D0;
-            background: transparent;
-            color: #40E0D0;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s, color 0.2s;
-        }
-
-        .theme-toggle:hover {
-            background: #40E0D0;
-            color: #0a0a0a;
-        }
-
-        .theme-toggle svg {
-            width: 22px;
-            height: 22px;
-        }
-
-        .theme-toggle .icon-moon {
-            display: none;
-        }
-
-        body.light-mode .theme-toggle .icon-sun {
-            display: none;
-        }
-
-        body.light-mode .theme-toggle .icon-moon {
-            display: block;
         }
 
         h1 {
@@ -84,7 +38,7 @@
             font-weight: 700;
             margin-bottom: 10px;
             letter-spacing: -1px;
-            color: #40E0D0;
+            color: #00ff88;
         }
 
         .subtitle {
@@ -97,13 +51,13 @@
             border: 2px solid #333;
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 4px 4px 0 #40E0D0;
+            box-shadow: 4px 4px 0 #00ff88;
             transition: transform 0.2s;
         }
 
         .formula-section:hover {
             transform: translateY(-2px);
-            box-shadow: 6px 6px 0 #40E0D0;
+            box-shadow: 6px 6px 0 #00ff88;
         }
 
         .formula-header {
@@ -118,7 +72,7 @@
         .formula-name {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #40E0D0;
+            color: #00ff88;
         }
 
         .difficulty {
@@ -128,19 +82,19 @@
             font-weight: 600;
         }
 
-        .difficulty.easy { background: #40E0D0; }
+        .difficulty.easy { background: #4CAF50; }
         .difficulty.medium { background: #FF9800; }
         .difficulty.hard { background: #f44336; }
 
         .formula-syntax {
             background: #0a0a0a;
-            border-left: 4px solid #40E0D0;
+            border-left: 4px solid #00ff88;
             padding: 15px;
             font-family: 'Courier New', monospace;
             font-size: 1rem;
             margin: 15px 0;
             overflow-x: auto;
-            color: #40E0D0;
+            color: #00ff88;
         }
 
         .what-it-does {
@@ -153,7 +107,7 @@
             text-transform: uppercase;
             font-weight: 700;
             letter-spacing: 1px;
-            color: #40E0D0;
+            color: #00ff88;
         }
 
         .example {
@@ -169,12 +123,12 @@
             font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: #40E0D0;
+            color: #00ff88;
         }
 
         .try-it {
-            background: #1a2a2a;
-            border: 2px solid #40E0D0;
+            background: #1a2a1a;
+            border: 2px solid #00ff88;
             padding: 20px;
             margin: 20px 0;
         }
@@ -182,19 +136,19 @@
         .try-it h4 {
             margin-bottom: 10px;
             font-size: 1rem;
-            color: #40E0D0;
+            color: #00ff88;
         }
 
         .practice-area {
-            background: #0d1f1f;
-            border: 2px solid #40E0D0;
+            background: #0d1f0d;
+            border: 2px solid #00ff88;
             padding: 20px;
             margin: 20px 0;
         }
 
         .practice-area h4 {
             margin-bottom: 15px;
-            color: #40E0D0;
+            color: #00ff88;
         }
 
         .practice-input {
@@ -202,7 +156,7 @@
             padding: 12px;
             background: #0a0a0a;
             border: 2px solid #333;
-            color: #40E0D0;
+            color: #00ff88;
             font-family: 'Courier New', monospace;
             font-size: 1rem;
             margin-bottom: 10px;
@@ -211,7 +165,7 @@
 
         .practice-input:focus {
             outline: none;
-            border-color: #40E0D0;
+            border-color: #00ff88;
         }
 
         .practice-feedback {
@@ -222,9 +176,9 @@
         }
 
         .practice-feedback.correct {
-            background: #0d2d2d;
-            border-left-color: #40E0D0;
-            color: #40E0D0;
+            background: #0d2d0d;
+            border-left-color: #4CAF50;
+            color: #4CAF50;
             display: block;
         }
 
@@ -265,11 +219,11 @@
 
         .input-group input:focus {
             outline: none;
-            border-color: #40E0D0;
+            border-color: #00ff88;
         }
 
         .result {
-            background: #40E0D0;
+            background: #00ff88;
             color: #0a0a0a;
             padding: 15px;
             margin-top: 15px;
@@ -279,8 +233,8 @@
         }
 
         .pro-tip {
-            background: #0d2d2d;
-            border-left: 4px solid #40E0D0;
+            background: #0d2d0d;
+            border-left: 4px solid #4CAF50;
             padding: 15px;
             margin: 20px 0;
             font-style: italic;
@@ -293,30 +247,63 @@
             border: 2px solid #333;
             padding: 20px;
             margin-bottom: 30px;
-            box-shadow: 4px 4px 0 #40E0D0;
-            max-height: 500px;
-            overflow-y: auto;
+            box-shadow: 4px 4px 0 #00ff88;
             scrollbar-width: thin;
-            scrollbar-color: #40E0D0 #0a0a0a;
+            scrollbar-color: #00ff88 #0a0a0a;
         }
 
-        .nav::-webkit-scrollbar {
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .nav-header h3 {
+            font-size: 1.2rem;
+            color: #00ff88;
+            margin: 0;
+        }
+
+        .nav-toggle {
+            background: none;
+            border: none;
+            color: #00ff88;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+            transition: transform 0.3s;
+        }
+
+        .nav-toggle:hover {
+            transform: scale(1.2);
+        }
+
+        .nav-content {
+            max-height: 400px;
+            overflow-y: auto;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+        }
+
+        .nav-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .nav-content::-webkit-scrollbar {
             width: 8px;
         }
 
-        .nav::-webkit-scrollbar-track {
+        .nav-content::-webkit-scrollbar-track {
             background: #0a0a0a;
         }
 
-        .nav::-webkit-scrollbar-thumb {
-            background: #40E0D0;
+        .nav-content::-webkit-scrollbar-thumb {
+            background: #00ff88;
             border-radius: 4px;
-        }
-
-        .nav h3 {
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-            color: #40E0D0;
         }
 
         .nav ul {
@@ -335,7 +322,7 @@
         }
 
         .nav a:hover {
-            color: #40E0D0;
+            color: #00ff88;
         }
 
         @media (max-width: 768px) {
@@ -353,7 +340,7 @@
         }
 
         .check-btn {
-            background: #40E0D0;
+            background: #00ff88;
             color: #0a0a0a;
             border: none;
             padding: 10px 20px;
@@ -371,138 +358,60 @@
             transform: scale(0.95);
         }
 
-        /* Light mode */
-        body.light-mode {
-            background: #f5f5f5;
-            color: #1a1a1a;
+        .copy-btn {
+            background: #333;
+            color: #00ff88;
+            border: 1px solid #00ff88;
+            padding: 5px 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-left: 10px;
+            position: relative;
         }
 
-        body.light-mode .subtitle {
-            color: #555;
-        }
-
-        body.light-mode .formula-section {
-            background: #fff;
-            border-color: #ccc;
-            box-shadow: 4px 4px 0 #40E0D0;
-        }
-
-        body.light-mode .formula-section:hover {
-            box-shadow: 6px 6px 0 #40E0D0;
-        }
-
-        body.light-mode .formula-header {
-            border-bottom-color: #ccc;
-        }
-
-        body.light-mode .formula-syntax {
-            background: #f0f0f0;
-            border-left-color: #40E0D0;
-            color: #1a5a52;
-        }
-
-        body.light-mode .example {
-            background: #eee;
-            border-left-color: #888;
-        }
-
-        body.light-mode .try-it {
-            background: #e8f8f6;
-            border-color: #40E0D0;
-        }
-
-        body.light-mode .practice-area {
-            background: #e8f8f6;
-            border-color: #40E0D0;
-        }
-
-        body.light-mode .practice-input {
-            background: #fff;
-            border-color: #ccc;
-            color: #1a1a1a;
-        }
-
-        body.light-mode .practice-input:focus {
-            border-color: #40E0D0;
-        }
-
-        body.light-mode .practice-feedback.correct {
-            background: #e0f5f2;
-            border-left-color: #40E0D0;
-            color: #1a5a52;
-        }
-
-        body.light-mode .practice-feedback.incorrect {
-            background: #fde8e8;
-            border-left-color: #f44336;
-            color: #c62828;
-        }
-
-        body.light-mode .input-group input {
-            background: #fff;
-            border-color: #ccc;
-            color: #1a1a1a;
-        }
-
-        body.light-mode .input-group input:focus {
-            border-color: #40E0D0;
-        }
-
-        body.light-mode .result {
-            background: #40E0D0;
+        .copy-btn:hover {
+            background: #00ff88;
             color: #0a0a0a;
         }
 
-        body.light-mode .pro-tip {
-            background: #e0f5f2;
-            border-left-color: #40E0D0;
-            color: #333;
+        .copy-btn:active {
+            transform: scale(0.95);
         }
 
-        body.light-mode .nav {
-            background: #fff;
-            border-color: #ccc;
-            scrollbar-color: #40E0D0 #eee;
-        }
-
-        body.light-mode .nav::-webkit-scrollbar-track {
-            background: #eee;
-        }
-
-        body.light-mode .nav a {
-            color: #333;
-        }
-
-        body.light-mode .nav a:hover {
-            color: #40E0D0;
-        }
-
-        body.light-mode .theme-toggle:hover {
-            background: #40E0D0;
+        .copy-btn.copied {
+            background: #4CAF50;
             color: #0a0a0a;
+        }
+
+        .formula-syntax-wrapper {
+            position: relative;
+            margin: 15px 0;
+        }
+
+        .formula-syntax-wrapper .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            margin: 0;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="header-title-wrap">
-                <h1>Excel Formulas That Actually Work</h1>
-                <p class="subtitle">No fluff. No nonsense. Just formulas that get the job done. Probably.</p>
-            </div>
-            <button type="button" class="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">
-                <svg class="icon-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12 3v1.5m0 15V21m9-9h-1.5M4.5 12H3m15.364 6.364l-1.06-1.06M6.696 6.696L5.636 5.636m12.728 0l-1.06 1.06M6.696 17.304l-1.06 1.06M12 7.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9z"/>
-                </svg>
-                <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>
-                </svg>
-            </button>
+            <h1>Excel Formulas That Actually Work</h1>
+            <p class="subtitle">No fluff. No nonsense. Just formulas that get the job done. Probably.</p>
         </header>
 
         <div class="nav">
-            <h3>Quick Jump</h3>
-            <ul>
+            <div class="nav-header" onclick="toggleNav()">
+                <h3>Quick Jump</h3>
+                <button class="nav-toggle" id="nav-toggle">−</button>
+            </div>
+            <div class="nav-content" id="nav-content">
+                <ul>
                 <li><a href="#sum">SUM</a></li>
                 <li><a href="#average">AVERAGE</a></li>
                 <li><a href="#if">IF</a></li>
@@ -541,6 +450,7 @@
                 <li><a href="#find-search">FIND/SEARCH</a></li>
                 <li><a href="#upper-lower-proper">UPPER/LOWER/PROPER</a></li>
             </ul>
+            </div>
         </div>
 
         <!-- SUM -->
@@ -555,10 +465,13 @@
                 <p>Adds numbers together. Groundbreaking stuff, really.</p>
             </div>
 
-            <div class="formula-syntax">
-                =SUM(number1, number2, ...)
-                <br>or<br>
-                =SUM(A1:A10)
+            <div class="formula-syntax-wrapper">
+                <button class="copy-btn" onclick="copyFormula(this, '=SUM(A1:A10)')">Copy</button>
+                <div class="formula-syntax">
+                    =SUM(number1, number2, ...)
+                    <br>or<br>
+                    =SUM(A1:A10)
+                </div>
             </div>
 
             <div class="example">
@@ -612,10 +525,13 @@
                 <p>Calculates the mean. Remember GCSE maths? This is why.</p>
             </div>
 
-            <div class="formula-syntax">
-                =AVERAGE(number1, number2, ...)
-                <br>or<br>
-                =AVERAGE(A1:A10)
+            <div class="formula-syntax-wrapper">
+                <button class="copy-btn" onclick="copyFormula(this, '=AVERAGE(A1:A10)')">Copy</button>
+                <div class="formula-syntax">
+                    =AVERAGE(number1, number2, ...)
+                    <br>or<br>
+                    =AVERAGE(A1:A10)
+                </div>
             </div>
 
             <div class="example">
@@ -661,8 +577,11 @@
                 <p>Makes decisions. Like you, but consistent.</p>
             </div>
 
-            <div class="formula-syntax">
-                =IF(condition, value_if_true, value_if_false)
+            <div class="formula-syntax-wrapper">
+                <button class="copy-btn" onclick="copyFormula(this, '=IF(A1>0, \"Yes\", \"No\")')">Copy</button>
+                <div class="formula-syntax">
+                    =IF(condition, value_if_true, value_if_false)
+                </div>
             </div>
 
             <div class="example">
@@ -713,8 +632,11 @@
                 <p>Like IF, but for when you have more than two options and don't fancy nesting 47 IFs like a lunatic.</p>
             </div>
 
-            <div class="formula-syntax">
-                =SWITCH(expression, value1, result1, [value2, result2], ..., [default])
+            <div class="formula-syntax-wrapper">
+                <button class="copy-btn" onclick="copyFormula(this, '=SWITCH(A1, 1, \"One\", 2, \"Two\", 3, \"Three\")')">Copy</button>
+                <div class="formula-syntax">
+                    =SWITCH(expression, value1, result1, [value2, result2], ..., [default])
+                </div>
             </div>
 
             <div class="example">
@@ -750,8 +672,11 @@
                 <p>Finds something in the first column of a table, then returns a value from another column. Like ctrl+F, but with more steps and more ways to break.</p>
             </div>
 
-            <div class="formula-syntax">
-                =VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup])
+            <div class="formula-syntax-wrapper">
+                <button class="copy-btn" onclick="copyFormula(this, '=VLOOKUP(A1, A1:B10, 2, FALSE)')">Copy</button>
+                <div class="formula-syntax">
+                    =VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup])
+                </div>
             </div>
 
             <div class="example">
@@ -793,8 +718,11 @@
                 <p>The modern replacement for VLOOKUP. Can search any direction and doesn't require a degree in Excel archaeology. Only works in Excel 365/2021+, so if you're still on 2007, unlucky.</p>
             </div>
 
-            <div class="formula-syntax">
-                =XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found])
+            <div class="formula-syntax-wrapper">
+                <button class="copy-btn" onclick="copyFormula(this, '=XLOOKUP(A1, A:A, B:B, \"Not Found\")')">Copy</button>
+                <div class="formula-syntax">
+                    =XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found])
+                </div>
             </div>
 
             <div class="example">
@@ -829,8 +757,11 @@
                 <p>The power combo for people who want to feel superior to VLOOKUP users. INDEX returns a value from a position. MATCH finds that position. Together, they're more flexible than a yoga instructor.</p>
             </div>
 
-            <div class="formula-syntax">
-                =INDEX(return_range, MATCH(lookup_value, lookup_range, 0))
+            <div class="formula-syntax-wrapper">
+                <button class="copy-btn" onclick="copyFormula(this, '=INDEX(B:B, MATCH(A1, A:A, 0))')">Copy</button>
+                <div class="formula-syntax">
+                    =INDEX(return_range, MATCH(lookup_value, lookup_range, 0))
+                </div>
             </div>
 
             <div class="example">
@@ -865,8 +796,11 @@
                 <p>Turns text into a cell reference. Sounds pointless until you need it, then it's brilliant. Like insurance, but for spreadsheets.</p>
             </div>
 
-            <div class="formula-syntax">
-                =INDIRECT(ref_text, [a1])
+            <div class="formula-syntax-wrapper">
+                <button class="copy-btn" onclick="copyFormula(this, '=INDIRECT(\"A1\")')">Copy</button>
+                <div class="formula-syntax">
+                    =INDIRECT(ref_text, [a1])
+                </div>
             </div>
 
             <div class="example">
@@ -910,8 +844,11 @@
                 <p>Converts a range into a single column. Useful when your data is spread sideways like butter on toast and you need it vertical. Excel 365 only.</p>
             </div>
 
-            <div class="formula-syntax">
-                =TOCOL(array, [ignore], [scan_by_column])
+            <div class="formula-syntax-wrapper">
+                <button class="copy-btn" onclick="copyFormula(this, '=TOCOL(A1:C10)')">Copy</button>
+                <div class="formula-syntax">
+                    =TOCOL(array, [ignore], [scan_by_column])
+                </div>
             </div>
 
             <div class="example">
@@ -949,8 +886,11 @@
                 <p>Like TOCOL, but horizontal. Converts a range into a single row. Excel 365 only.</p>
             </div>
 
-            <div class="formula-syntax">
-                =TOROW(array, [ignore], [scan_by_column])
+            <div class="formula-syntax-wrapper">
+                <button class="copy-btn" onclick="copyFormula(this, '=TOROW(A1:A10)')">Copy</button>
+                <div class="formula-syntax">
+                    =TOROW(array, [ignore], [scan_by_column])
+                </div>
             </div>
 
             <div class="example">
@@ -989,8 +929,11 @@
                 <p>Adds up numbers, but only the ones that meet your criteria. Like SUM with standards.</p>
             </div>
 
-            <div class="formula-syntax">
-                =SUMIF(range, criteria, [sum_range])
+            <div class="formula-syntax-wrapper">
+                <button class="copy-btn" onclick="copyFormula(this, '=SUMIF(A:A, \"criteria\", B:B)')">Copy</button>
+                <div class="formula-syntax">
+                    =SUMIF(range, criteria, [sum_range])
+                </div>
             </div>
 
             <div class="example">
@@ -1019,23 +962,39 @@
     </div>
 
     <script>
-        // Theme toggle (sun = switch to light, moon = switch to dark)
-        (function() {
-            var KEY = 'excel-formulas-theme';
-            var btn = document.querySelector('.theme-toggle');
-            if (!btn) return;
-            function isLight() { return document.body.classList.contains('light-mode'); }
-            function apply(light) {
-                if (light) document.body.classList.add('light-mode');
-                else document.body.classList.remove('light-mode');
-                try { localStorage.setItem(KEY, light ? 'light' : 'dark'); } catch (e) {}
+        // Toggle navigation
+        function toggleNav() {
+            const navContent = document.getElementById('nav-content');
+            const navToggle = document.getElementById('nav-toggle');
+            
+            if (navContent.classList.contains('collapsed')) {
+                navContent.classList.remove('collapsed');
+                navToggle.textContent = '−';
+            } else {
+                navContent.classList.add('collapsed');
+                navToggle.textContent = '+';
             }
-            try {
-                var saved = localStorage.getItem(KEY);
-                if (saved === 'light') apply(true);
-            } catch (e) {}
-            btn.addEventListener('click', function() { apply(!isLight()); });
-        })();
+        }
+
+        // Copy formula to clipboard
+        function copyFormula(button, formula) {
+            navigator.clipboard.writeText(formula).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                button.textContent = 'Failed';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
 
         // Practice formula checker
         function normalizeFormula(formula) {
