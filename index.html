@@ -1,6 +1,3 @@
-Excel formulas dark · HTML
-Copy
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +30,53 @@ Copy
             margin-bottom: 60px;
             border-bottom: 3px solid #40E0D0;
             padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .header-title-wrap {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .theme-toggle {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border: 2px solid #40E0D0;
+            background: transparent;
+            color: #40E0D0;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .theme-toggle:hover {
+            background: #40E0D0;
+            color: #0a0a0a;
+        }
+
+        .theme-toggle svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .theme-toggle .icon-moon {
+            display: none;
+        }
+
+        body.light-mode .theme-toggle .icon-sun {
+            display: none;
+        }
+
+        body.light-mode .theme-toggle .icon-moon {
+            display: block;
         }
 
         h1 {
@@ -326,13 +370,134 @@ Copy
         .check-btn:active {
             transform: scale(0.95);
         }
+
+        /* Light mode */
+        body.light-mode {
+            background: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        body.light-mode .subtitle {
+            color: #555;
+        }
+
+        body.light-mode .formula-section {
+            background: #fff;
+            border-color: #ccc;
+            box-shadow: 4px 4px 0 #40E0D0;
+        }
+
+        body.light-mode .formula-section:hover {
+            box-shadow: 6px 6px 0 #40E0D0;
+        }
+
+        body.light-mode .formula-header {
+            border-bottom-color: #ccc;
+        }
+
+        body.light-mode .formula-syntax {
+            background: #f0f0f0;
+            border-left-color: #40E0D0;
+            color: #1a5a52;
+        }
+
+        body.light-mode .example {
+            background: #eee;
+            border-left-color: #888;
+        }
+
+        body.light-mode .try-it {
+            background: #e8f8f6;
+            border-color: #40E0D0;
+        }
+
+        body.light-mode .practice-area {
+            background: #e8f8f6;
+            border-color: #40E0D0;
+        }
+
+        body.light-mode .practice-input {
+            background: #fff;
+            border-color: #ccc;
+            color: #1a1a1a;
+        }
+
+        body.light-mode .practice-input:focus {
+            border-color: #40E0D0;
+        }
+
+        body.light-mode .practice-feedback.correct {
+            background: #e0f5f2;
+            border-left-color: #40E0D0;
+            color: #1a5a52;
+        }
+
+        body.light-mode .practice-feedback.incorrect {
+            background: #fde8e8;
+            border-left-color: #f44336;
+            color: #c62828;
+        }
+
+        body.light-mode .input-group input {
+            background: #fff;
+            border-color: #ccc;
+            color: #1a1a1a;
+        }
+
+        body.light-mode .input-group input:focus {
+            border-color: #40E0D0;
+        }
+
+        body.light-mode .result {
+            background: #40E0D0;
+            color: #0a0a0a;
+        }
+
+        body.light-mode .pro-tip {
+            background: #e0f5f2;
+            border-left-color: #40E0D0;
+            color: #333;
+        }
+
+        body.light-mode .nav {
+            background: #fff;
+            border-color: #ccc;
+            scrollbar-color: #40E0D0 #eee;
+        }
+
+        body.light-mode .nav::-webkit-scrollbar-track {
+            background: #eee;
+        }
+
+        body.light-mode .nav a {
+            color: #333;
+        }
+
+        body.light-mode .nav a:hover {
+            color: #40E0D0;
+        }
+
+        body.light-mode .theme-toggle:hover {
+            background: #40E0D0;
+            color: #0a0a0a;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Excel Formulas That Actually Work</h1>
-            <p class="subtitle">No fluff. No nonsense. Just formulas that get the job done. Probably.</p>
+            <div class="header-title-wrap">
+                <h1>Excel Formulas That Actually Work</h1>
+                <p class="subtitle">No fluff. No nonsense. Just formulas that get the job done. Probably.</p>
+            </div>
+            <button type="button" class="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle light/dark mode">
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 3v1.5m0 15V21m9-9h-1.5M4.5 12H3m15.364 6.364l-1.06-1.06M6.696 6.696L5.636 5.636m12.728 0l-1.06 1.06M6.696 17.304l-1.06 1.06M12 7.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9z"/>
+                </svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/>
+                </svg>
+            </button>
         </header>
 
         <div class="nav">
@@ -854,6 +1019,24 @@ Copy
     </div>
 
     <script>
+        // Theme toggle (sun = switch to light, moon = switch to dark)
+        (function() {
+            var KEY = 'excel-formulas-theme';
+            var btn = document.querySelector('.theme-toggle');
+            if (!btn) return;
+            function isLight() { return document.body.classList.contains('light-mode'); }
+            function apply(light) {
+                if (light) document.body.classList.add('light-mode');
+                else document.body.classList.remove('light-mode');
+                try { localStorage.setItem(KEY, light ? 'light' : 'dark'); } catch (e) {}
+            }
+            try {
+                var saved = localStorage.getItem(KEY);
+                if (saved === 'light') apply(true);
+            } catch (e) {}
+            btn.addEventListener('click', function() { apply(!isLight()); });
+        })();
+
         // Practice formula checker
         function normalizeFormula(formula) {
             return formula.toUpperCase().replace(/\s/g, '');
